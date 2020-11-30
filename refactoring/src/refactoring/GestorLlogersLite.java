@@ -32,6 +32,7 @@ public class GestorLlogersLite {
 	    Vehicle v3 = new Vehicle("Seat","Cupra", Vehicle.GENERAL);
 	    Date date3 = dateFormat1.parse("2/8/2020");
 	    Lloguer ll3 = new Lloguer(date3, 5, v3);
+	    
 		
 	}
 	
