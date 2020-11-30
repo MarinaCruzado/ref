@@ -24,16 +24,20 @@ public class GestorLlogersLite {
 		Vehicle v1 = new Vehicle("Tata", "Vista", Vehicle.BASIC);
 	    Date date1 = dateFormat1.parse("2/8/2013");
 	    Lloguer ll1 = new Lloguer(date1, 2, v1);
+	    c.afegeix(ll1);
 	    
 	    Vehicle v2 = new Vehicle ("Hyundai", "Atos", Vehicle.LUXE);
 	    Date date2 = dateFormat1.parse("2/10/2017");
 	    Lloguer ll2 = new Lloguer(date2, 1, v2);
+	    c.afegeix(ll2);
 	    
 	    Vehicle v3 = new Vehicle("Seat","Cupra", Vehicle.GENERAL);
 	    Date date3 = dateFormat1.parse("2/8/2020");
 	    Lloguer ll3 = new Lloguer(date3, 5, v3);
-	    
-		
+	    c.afegeix(ll3);
 	}
 	
+	public static String HistorialClient (Client c) {
+		return c.informe();
+	}
 }
