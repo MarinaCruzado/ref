@@ -37,6 +37,56 @@ public class Client {
     public boolean conte(Lloguer lloguer) {
         return lloguers.contains(lloguer);
     }
+    
+    public double importTotal() {
+    	double total = 0.0;
+    	for (Lloguer lloguer: lloguers) {
+    		total += lloguer.quantitat() * 30;
+    	}
+    	return total;
+    }
+
+    public int importBonificacions() {
+    	int bonificacions = 0;
+    	for (Lloguer lloguer: lloguers) {
+    		bonificacions += lloguer.bonificacions();
+    	}
+    	return bonificacions;
+    }
+    
+    
+    public String informeHTML() {
+    	return composaCapsaleraHTML() +
+    			composaDetallHTML() +
+    			composaPeuHTML();
+    }
+    
+    public String composaCapsaleraHTML() {
+        return "<h1>Informe de lloguers</h1>" +
+                "<p>Informe de lloguers del client <em>" + getNom() + 
+                "</em> (<strong>" + getNif() + "</strong>)</p>";
+    }
+
+    public String composaDetallHTML() {
+        String resultat = "<table>" +
+        	"<tr><td><strong>Marca</strong></td>" + 
+        	"<td><strong>Model</strong></td>" + 
+        	"<td><strong>Import</strong></td></tr>";
+        for(Lloguer lloguer : lloguers) {
+            resultat += "<tr><td>" + 
+            	lloguer.getVehicle().getMarca() + "</td><td>" + 
+            	lloguer.getVehicle().getModel() + "</td><td>" + 
+            	(lloguer.quantitat() * 30) + "€" + "</td></tr>";
+        }
+        return resultat  + "</table>";
+    }
+
+    public String composaPeuHTML() {
+        return "<p>Import a pagar: <em>" + importTotal() + "€</em></p>\n" +
+                "<p>Punts guanyats: <em>" + importBonificacions() + "</em></p>";
+    }
+    
+    
 
     public String informe() {
     	return composaCapsalera() + 
@@ -64,20 +114,5 @@ public class Client {
     	return "Import a pagar: " + importTotal() + "€\n" +
                 "Punts guanyats: " + importBonificacions() + "\n";
     }
-    
-    public double importTotal() {
-    	double total = 0.0;
-    	for (Lloguer lloguer: lloguers) {
-    		total += lloguer.quantitat() * 30;
-    	}
-    	return total;
-    }
 
-    public int importBonificacions() {
-    	int bonificacions = 0;
-    	for (Lloguer lloguer: lloguers) {
-    		bonificacions += lloguer.bonificacions();
-    	}
-    	return bonificacions;
-    }
 }
