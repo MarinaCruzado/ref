@@ -16,7 +16,7 @@ public class GestorLlogersLite {
 		Lloguer lloguerBasic = new Lloguer(date, 2, vehicleBasic);
 
 		// demostració de formatat d'una data
-		//System.out.println(dateFormat.format(lloguerBasic.getData()));
+		System.out.println(dateFormat.format(lloguerBasic.getData()));
 		
 		Client c = new Client("123456", "Marina", "6666666");
 		
